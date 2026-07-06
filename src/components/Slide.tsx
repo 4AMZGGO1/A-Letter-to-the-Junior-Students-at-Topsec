@@ -6,13 +6,17 @@ import {
   Bug,
   CheckCircle2,
   Code2,
+  Coffee,
+  Droplets,
   FileText,
   GitBranch,
   Globe2,
   GraduationCap,
   HardDrive,
+  Home,
   Laptop,
   ListChecks,
+  MapPin,
   MessageSquareText,
   Presentation,
   Rocket,
@@ -20,6 +24,8 @@ import {
   ShieldCheck,
   Sparkles,
   Terminal,
+  Utensils,
+  Wifi,
   type LucideIcon,
   Wrench,
 } from "lucide-react";
@@ -40,13 +46,17 @@ const iconMap: Record<string, LucideIcon> = {
   Bug,
   CheckCircle2,
   Code2,
+  Coffee,
+  Droplets,
   FileText,
   GitBranch,
   Globe2,
   GraduationCap,
   HardDrive,
+  Home,
   Laptop,
   ListChecks,
+  MapPin,
   MessageSquareText,
   Presentation,
   Rocket,
@@ -54,6 +64,8 @@ const iconMap: Record<string, LucideIcon> = {
   ShieldCheck,
   Sparkles,
   Terminal,
+  Utensils,
+  Wifi,
   Wrench,
 };
 
@@ -61,8 +73,8 @@ function Header({ slide }: { slide: SlideData }) {
   return (
     <div className="max-w-5xl">
       {slide.eyebrow ? <p className="eyebrow">{slide.eyebrow}</p> : null}
-      <h1 className="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">{slide.title}</h1>
-      {slide.subtitle ? <p className="mt-5 max-w-4xl text-xl leading-relaxed text-slate-300 lg:text-2xl">{slide.subtitle}</p> : null}
+      <h1 className="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">{slide.title}</h1>
+      {slide.subtitle ? <p className="mt-4 max-w-4xl text-lg leading-relaxed text-slate-300 lg:text-xl">{slide.subtitle}</p> : null}
     </div>
   );
 }
@@ -75,9 +87,9 @@ function PointList({ points }: { points?: string[] }) {
   return (
     <div className="grid gap-3 sm:grid-cols-3">
       {points.map((point) => (
-        <div key={point} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.05] p-4">
-          <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-emerald-200" aria-hidden="true" />
-          <p className="text-lg leading-relaxed text-slate-100">{point}</p>
+        <div key={point} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.05] p-3">
+          <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-emerald-200" aria-hidden="true" />
+          <p className="text-base leading-relaxed text-slate-100">{point}</p>
         </div>
       ))}
     </div>
@@ -144,17 +156,17 @@ function TagCloudSlide({ slide }: { slide: SlideData }) {
 
 function CapabilitiesSlide({ slide }: { slide: SlideData }) {
   return (
-    <div className="relative z-10 space-y-9">
+    <div className="relative z-10 space-y-7">
       <Header slide={slide} />
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {slide.cards?.map((card) => {
           const Icon = iconMap[card.icon ?? "Sparkles"] ?? Sparkles;
 
           return (
-            <article key={card.title} className="surface-card p-5 sm:p-6">
-              <Icon className="h-8 w-8 text-cyan-200" aria-hidden="true" />
-              <h3 className="mt-5 text-2xl font-semibold text-white">{card.title}</h3>
-              <p className="mt-3 text-lg leading-relaxed text-slate-300">{card.body}</p>
+            <article key={card.title} className="surface-card p-4 sm:p-5">
+              <Icon className="h-7 w-7 text-cyan-200" aria-hidden="true" />
+              <h3 className="mt-4 text-xl font-semibold text-white">{card.title}</h3>
+              <p className="mt-2 text-base leading-relaxed text-slate-300">{card.body}</p>
             </article>
           );
         })}
@@ -165,22 +177,22 @@ function CapabilitiesSlide({ slide }: { slide: SlideData }) {
 
 function TaskBoardSlide({ slide }: { slide: SlideData }) {
   return (
-    <div className="relative z-10 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+    <div className="relative z-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
       <Header slide={slide} />
       <div className="terminal-panel shadow-panel">
-        <div className="flex items-center gap-2 border-b border-white/10 px-5 py-4">
+        <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3">
           <span className="h-3 w-3 rounded-full bg-red-400" />
           <span className="h-3 w-3 rounded-full bg-amber-300" />
           <span className="h-3 w-3 rounded-full bg-emerald-300" />
           <span className="ml-3 font-mono text-sm text-slate-400">agent-tasks.log</span>
         </div>
-        <div className="space-y-4 p-5">
+        <div className="space-y-3 p-4">
           {slide.tasks?.map((task, index) => (
-            <div key={task.title} className="grid gap-3 rounded-lg border border-white/10 bg-black/25 p-4 sm:grid-cols-[auto_1fr]">
-              <span className="font-mono text-lg text-cyan-200">{String(index + 1).padStart(2, "0")}</span>
+            <div key={task.title} className="grid gap-3 rounded-lg border border-white/10 bg-black/25 p-3 sm:grid-cols-[auto_1fr]">
+              <span className="font-mono text-base text-cyan-200">{String(index + 1).padStart(2, "0")}</span>
               <div>
-                <h3 className="text-xl font-semibold text-white">{task.title}</h3>
-                <p className="mt-2 text-base leading-relaxed text-slate-300">{task.detail}</p>
+                <h3 className="text-lg font-semibold text-white">{task.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-slate-300">{task.detail}</p>
               </div>
             </div>
           ))}
@@ -288,18 +300,18 @@ function FocusSlide({ slide }: { slide: SlideData }) {
 
 function ExpansionSlide({ slide }: { slide: SlideData }) {
   return (
-    <div className="relative z-10 space-y-8">
+    <div className="relative z-10 space-y-6">
       <Header slide={slide} />
       {slide.quote ? (
-        <p className="inline-flex rounded-xl border border-cyan-200/25 bg-cyan-300/10 px-5 py-3 text-2xl font-semibold text-cyan-50">
+        <p className="inline-flex rounded-xl border border-cyan-200/25 bg-cyan-300/10 px-4 py-2 text-xl font-semibold text-cyan-50">
           {slide.quote}
         </p>
       ) : null}
       <div className="grid gap-4">
         {slide.expansions?.map((row) => (
-          <section key={row.topic} className="grid gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-5 lg:grid-cols-[0.8fr_1fr_1.4fr]">
-            <h3 className="text-2xl font-semibold text-white">{row.topic}</h3>
-            <p className="text-lg leading-relaxed text-slate-300">{row.classTask}</p>
+          <section key={row.topic} className="grid gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-4 lg:grid-cols-[0.8fr_1fr_1.4fr]">
+            <h3 className="text-xl font-semibold text-white">{row.topic}</h3>
+            <p className="text-base leading-relaxed text-slate-300">{row.classTask}</p>
             <div className="flex flex-wrap gap-2">
               {row.explore.map((item) => (
                 <span key={item} className="skill-chip">
@@ -340,7 +352,7 @@ function InterviewSlide({ slide }: { slide: SlideData }) {
 
 function SkillMapSlide({ slide }: { slide: SlideData }) {
   return (
-    <div className="relative z-10 space-y-8">
+    <div className="relative z-10 space-y-6">
       <Header slide={slide} />
       <SkillMap groups={slide.skillGroups ?? []} />
     </div>
@@ -349,9 +361,9 @@ function SkillMapSlide({ slide }: { slide: SlideData }) {
 
 function ResourcesSlide({ slide }: { slide: SlideData }) {
   return (
-    <div className="relative z-10 space-y-8">
+    <div className="relative z-10 space-y-6">
       <Header slide={slide} />
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
         {slide.resources?.map((resource) => (
           <ResourceCard key={resource.url} resource={resource} />
         ))}
@@ -425,7 +437,7 @@ export function Slide({ slide, current, total }: SlideProps) {
     <section className="slide-stage" aria-label={`${current + 1} / ${total} ${slide.title}`}>
       <div className="tech-grid" aria-hidden="true" />
       <div className="scan-beam" aria-hidden="true" />
-      <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col justify-center px-5 py-20 sm:px-10 lg:px-16">
+      <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col justify-center px-5 py-12 sm:px-10 lg:px-16">
         {renderSlide()}
       </div>
     </section>
