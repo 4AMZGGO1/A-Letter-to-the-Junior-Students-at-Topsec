@@ -9,8 +9,8 @@ type SkillMapProps = {
 
 export function SkillMap({ groups }: SkillMapProps) {
   return (
-    <div className="grid items-center gap-8 lg:grid-cols-[minmax(300px,520px)_1fr]">
-      <div className="relative mx-auto aspect-square w-full max-w-[520px]">
+    <div className="grid items-center gap-6 lg:grid-cols-[minmax(260px,390px)_1fr]">
+      <div className="relative mx-auto aspect-square w-full max-w-[390px]">
         <div className="radar-grid absolute inset-0 rounded-full" />
         <div className="absolute inset-[18%] rounded-full border border-cyan-200/15" />
         <div className="absolute inset-[32%] rounded-full border border-emerald-200/15" />
@@ -39,11 +39,11 @@ export function SkillMap({ groups }: SkillMapProps) {
         })}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-2.5 sm:grid-cols-2">
         {groups.map((group) => (
-          <section key={group.name} className="surface-card p-5">
-            <h3 className="text-xl font-semibold text-white">{group.name}</h3>
-            <div className="mt-4 flex flex-wrap gap-2">
+          <section key={group.name} className="surface-card p-3">
+            <h3 className="text-base font-semibold text-white">{group.name}</h3>
+            <div className="mt-2 flex flex-wrap gap-1.5">
               {group.skills.map((skill) => (
                 <span key={skill} className="skill-chip">
                   {skill}

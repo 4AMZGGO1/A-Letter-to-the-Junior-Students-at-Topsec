@@ -6,6 +6,8 @@ import { ProgressBar } from "./components/ProgressBar";
 import { Slide } from "./components/Slide";
 import { slides } from "./data/slides";
 
+const presenterSyncUrl = import.meta.env.VITE_PRESENTER_SYNC_URL ?? "http://127.0.0.1:5175/state";
+
 function getInitialSlide() {
   const match = window.location.hash.match(/slide-(\d+)/);
   if (!match) {
@@ -39,6 +41,23 @@ function App() {
   useEffect(() => {
     window.history.replaceState(null, "", `#slide-${current + 1}`);
   }, [current]);
+
+  useEffect(() => {
+    const slide = slides[current];
+
+    void fetch(presenterSyncUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        index: current,
+        id: slide.id,
+        title: slide.title,
+        total,
+      }),
+    }).catch(() => {
+      // The deck should keep working even when the presenter notes server is not running.
+    });
+  }, [current, total]);
 
   useEffect(() => {
     const onHashChange = () => {

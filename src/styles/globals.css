@@ -86,7 +86,7 @@ a {
   }
 
   .skill-chip {
-    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-base text-slate-100;
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.06] px-2.5 py-1 text-sm text-slate-100;
   }
 
   .control-button {
