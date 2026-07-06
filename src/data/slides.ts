@@ -125,8 +125,8 @@ export const slides: Slide[] = [
     titleLines: ["AI 时代，", "别只把作业当作作业"],
     subtitle: "给第二届天融信班学弟学妹的一次经验分享",
     speaker: {
-      name: "经验分享者",
-      meta: "第一届天融信班",
+      name: "经验分享",
+      meta: "第一届天融信班学长",
     },
     points: ["工具", "拓展学习", "实训", "就业准备"],
   },
